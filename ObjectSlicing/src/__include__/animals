@@ -1,0 +1,8 @@
+#ifndef ANIMALS_H
+#define ANIMALS_H
+
+#include "../animals/animal.h"
+#include "../animals/cat.h"
+#include "../animals/dog.h"
+
+#endif // ANIMALS_H
