@@ -42,6 +42,12 @@ bool isCurrentMachineBigEndian()
     // 0x40160d  <+0x000d>        c7 45 fc 21 43 65 87  movl   $0x87654321,-0x4(%ebp)
 
     char reinterpreted = (char) number3;
+    char reinterpreted2 = static_cast<char>(number3);
+    char reinterpreted_lo = reinterpret_cast<char*>(&number3)[0];
+    char reinterpreted_hi = reinterpret_cast<char*>(&number3)[1];
+
+    std::cout << "sizeof(int) =" << sizeof(int);
+    std::cout << "sizeof(char) = " << sizeof(char);
 
     return !(reinterpret_cast<char *>(&number)[0]);
 }
