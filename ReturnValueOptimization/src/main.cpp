@@ -27,6 +27,12 @@
 
 #include <iostream>
 
+/*
+ * Macro to suppress "unused variable compiler warning"
+ */
+#define UNUSED(identifier) (void)identifier;
+
+
 class Class
 {
 public:
@@ -41,16 +47,21 @@ public:
     }
 };
 
+
 Class makeObject()
 {
     return Class();
 }
 
+
 int main()
 {
     std::cout << "Hello World!" << std::endl;
 
+    std::cout << "makeObject() - returns an object" << std::endl;
     Class object = makeObject();
+
+    UNUSED(object)
 
     return 0;
 }
