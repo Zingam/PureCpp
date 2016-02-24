@@ -1,19 +1,19 @@
+////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
+////////////////////////////////////////////////////////////////////////////////
 
-using namespace std;
-
-
-class SuperObject
+////////////////////////////////////////////////////////////////////////////////
+class BaseClass
 {
 public:
-    SuperObject() :
+    BaseClass() :
         id(0)
     {
         std::cout << "Constructing object (no Id)" << std::endl;
     }
 
-    SuperObject(int id)
-        : SuperObject()
+    BaseClass(int id)
+        : BaseClass()
     {
         this->id = id;
 
@@ -21,46 +21,46 @@ public:
                   << this->getId() << std::endl;
     }
 
-    SuperObject(const SuperObject& superObject) :
-        id(superObject.id)
+    BaseClass(const BaseClass& baseClass) :
+        id(baseClass.id)
     {
         std::cout << "Copying object Id (constructor): "
-                  << superObject.id << std::endl;
+                  << baseClass.id << std::endl;
     }
 
-    SuperObject& operator= (SuperObject& superObject)
+    BaseClass& operator= (BaseClass& baseClass)
     {
         std::cout << "Copying object Id (assignment): "
-                  << superObject.id << std::endl;
+                  << baseClass.id << std::endl;
 
-        return superObject;
+        return baseClass;
     }
 
-    SuperObject(SuperObject&& superObject)
+    BaseClass(BaseClass&& baseClass)
     {
         std::cout << "Moving object Id (constructor): "
-                  << superObject.id << std::endl;
+                  << baseClass.id << std::endl;
 
-        this->id = superObject.id;
+        this->id = baseClass.id;
     }
 
-    SuperObject& operator= (SuperObject&& superObject)
+    BaseClass& operator= (BaseClass&& baseClass)
     {
         std::cout << "Moving object Id (assignment): "
-                  << superObject.id << std::endl;
+                  << baseClass.id << std::endl;
 
-        if (this != &superObject)
+        if (this != &baseClass)
         {
             // Copy the data
-            this->id = superObject.id;
+            this->id = baseClass.id;
             // Clear the data from the original object
-            superObject.id = 0;
+            baseClass.id = 0;
         }
 
         return *this;
     }
 
-    virtual ~SuperObject()
+    virtual ~BaseClass()
     {
         std::cout << "Destroying object Id: "
                   << this->getId() << std::endl;
@@ -74,21 +74,27 @@ public:
 private:
     int id;
 };
+////////////////////////////////////////////////////////////////////////////////
 
-int main()
+////////////////////////////////////////////////////////////////////////////////
+void main()
 {
-    SuperObject superObject(1);
-    std::cout << std::endl
-              << "Testing object Id: "
-              << superObject.getId() << std::endl;
+    std::cout << "Creating a BaseClass object:" << std::endl;
+    BaseClass baseClass(1);
 
     std::cout << std::endl
-                << "Re-initializing the object:" << std::endl;
-    superObject = SuperObject(2);
+              << "Testing object Id: "
+              << baseClass.getId() << std::endl;
+
+    std::cout << std::endl
+                << "Re-initializing the BaseClass object:" << std::endl;
+    baseClass = BaseClass(2);
+
     std::cout << std::endl
               << "Testing object Id: "
-              << superObject.getId() << std::endl;
+              << baseClass.getId() << std::endl;
 
-    return 0;
+    std::cout << "\nAuto-destroying the object on exit:" << std::endl << std:: endl;
 }
+////////////////////////////////////////////////////////////////////////////////
 
