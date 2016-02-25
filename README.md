@@ -10,9 +10,10 @@ Experimental Apps with C/C++
 * Endianness - Testing endianness of the system
 * Inheritance - C++ inheritance
 * MemberFunctionAssignment - Assigning a value to a member function (a setter function example)
-* ObjectSlicing - An example of C++ Object Slicing
-* OperatorOverloading - An example of overloading iostream operator << for enums (uses <type_traits>)
-* ReturnValueOptimization - Demonstration of Return Value Optimization in modern compilers (C++ copy elision)
+* ObjectSlicing - C++ Object Slicing
+* OperatorOverloading - Overloading iostream operator << for enums (uses <type_traits>)
+* ProtectedConstructor - A base class with a protected constructor
+* ReturnValueOptimization - Return Value Optimization in modern compilers (C++ copy elision)
 * StaticObject - Static object construction and destruction
 * Utilities - Low level utility functions
 * VirtualMethods - Calling a virtual method from a base class
