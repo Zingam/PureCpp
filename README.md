@@ -13,6 +13,7 @@ Experimental Apps with C/C++
 * MultipleInheritance - Simple multiple inheritance test
 * ObjectSlicing - C++ Object Slicing
 * OperatorOverloading - Overloading iostream operator << for enums (uses <type_traits>)
+* pimpl - Simple pimpl idiom implementation
 * ProtectedConstructor - A base class with a protected constructor
 * ReturnValueOptimization - Return Value Optimization in modern compilers (C++ copy elision)
 * SimpleCpp11Threads - A simple C++11 threads test
