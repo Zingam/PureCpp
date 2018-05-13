@@ -15,5 +15,6 @@ Experimental Apps with C/C++
 * ProtectedConstructor - A base class with a protected constructor
 * ReturnValueOptimization - Return Value Optimization in modern compilers (C++ copy elision)
 * StaticObject - Static object construction and destruction
+* StoringObjectsInVector - Storing objects in a std::vector<T>
 * Utilities - Low level utility functions
 * VirtualMethods - Calling a virtual method from a base class
