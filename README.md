@@ -20,4 +20,5 @@ Experimental Apps with C/C++
 * StaticObject - Static object construction and destruction
 * StoringObjectsInVector - Storing objects in a std::vector<T>
 * Utilities - Low level utility functions
+* UUID - A universally unique identifier (UUID) converter class
 * VirtualMethods - Calling a virtual method from a base class
