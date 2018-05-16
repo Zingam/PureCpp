@@ -72,6 +72,18 @@ private:
     std::string uuidCanonicalString;
 };
 
+// Inline function declarations
+inline
+std::string ConvertToLowerCase(std::string str);
+inline
+std::wstring ConvertToLowerCase(std::wstring str);
+inline
+std::string ConvertToUpperCase(std::string str);
+inline
+std::wstring ConvertToUpperCase(std::wstring str);
+
+// Method template definitions
+
 template <typename StringType>
 inline auto UUID::ApplyCharacterFormat(StringType const& str) const
 -> StringType
@@ -85,6 +97,8 @@ inline auto UUID::ApplyCharacterFormat(StringType const& str) const
         return ConvertToLowerCase(str);
     }
 }
+
+// Inline function definitions
 
 inline
 std::string ConvertToLowerCase(std::string str)

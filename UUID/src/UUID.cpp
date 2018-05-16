@@ -10,8 +10,6 @@
 #include <sstream>
 #include <string>
 
-#include <iostream>
-
 UUID::UUID(std::string const& uuid)
     : uuid { {0} }
     , uuidCanonicalString{uuid}
