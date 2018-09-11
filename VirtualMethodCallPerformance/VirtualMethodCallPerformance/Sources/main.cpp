@@ -107,14 +107,14 @@ main(int argc, char* argv[])
   eh1s.emplace_back(new Event2());
 
   size_t repeats = 10'000'000;
-  repeats = 20;
+  repeats = 2;
 
   auto start1 = std::chrono::steady_clock::now();
   auto start11 = std::chrono::high_resolution_clock::now();
 
   for (size_t a = 0; a < repeats; ++a) {
     size_t i = 0;
-    while (i < events.size()) {
+    while (i < events.size() && 0 < events.size()) {
       for (auto& eh : eh1s) {
         auto r = eh->Process(&events[i]);
         if (r == true) {
@@ -137,7 +137,7 @@ main(int argc, char* argv[])
   auto start21 = std::chrono::high_resolution_clock::now();
   for (size_t a = 0; a < repeats; ++a) {
     size_t j = 0;
-    while (j < events.size()) {
+    while (j < events.size() && 0 < events.size()) {
       if (events[j] == EventType::EventType1) {
         eh3.Process((void*)&events[j++]);
         continue;
@@ -160,7 +160,7 @@ main(int argc, char* argv[])
   auto start31 = std::chrono::high_resolution_clock::now();
   for (size_t a = 0; a < repeats; ++a) {
     size_t j = 0;
-    while (j < events.size()) {
+    while (j < events.size() && 0 < events.size()) {
       switch (events[j]) {
         case EventType::EventType1: {
           eh3.Process((void*)&events[j]);
