@@ -13,8 +13,11 @@ project ("VirtualMethodCallPerformance")
 add_executable (${PROJECT_NAME}
   "Sources/EventHandlers.cpp"
   "Sources/EventHandlers.hpp"
+  "Sources/EventMap.cpp"
+  "Sources/EventMap.hpp"
   "Sources/Events.cpp"
   "Sources/Events.hpp"
   "Sources/EventType.hpp"
   "Sources/main.cpp"
+  "Sources/MetricPrefixes.hpp"
 )
