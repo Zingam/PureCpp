@@ -17,6 +17,7 @@ Experimental Apps with C/C++
 * ProtectedConstructor - A base class with a protected constructor
 * ReturnValueOptimization - Return Value Optimization in modern compilers (C++ copy elision)
 * SimpleCpp11Threads - A simple C++11 threads test
+* SimpleDelegate - A simple delegate implementation
 * StaticObject - Static object construction and destruction
 * StoringObjectsInVector - Storing objects in a `std::vector<T>`
 * Utilities - Low level utility functions
