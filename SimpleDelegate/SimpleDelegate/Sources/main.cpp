@@ -74,5 +74,27 @@ main(int argc, char* argv[])
   };
   delegate_DoubleAndPrint(2);
 
+  // Call the delegate via a smart pointer
+  using DoubleAndPrintDelegateType = Delegate<A, decltype(&A::DoubleAndPrint)>;
+  std::unique_ptr<DoubleAndPrintDelegateType> delegate_DoubleAndPrint_UPtr =
+    std::make_unique<DoubleAndPrintDelegateType>(a, &A::DoubleAndPrint);
+
+  if (delegate_DoubleAndPrint_UPtr) {
+    auto a = *delegate_DoubleAndPrint_UPtr;
+    a(3);
+    (*delegate_DoubleAndPrint_UPtr)(3);
+  }
+
+  auto delegate_DoubleAndPrint_Ptr = delegate_DoubleAndPrint_UPtr.release();
+  if (!delegate_DoubleAndPrint_UPtr) {
+    std::cout << "'delegate_DoubleAndPrint_Ptr' is 'nullptr'" << std::endl;
+  }
+
+  // Call the delegate via a raw pointer
+  if (delegate_DoubleAndPrint_Ptr)
+  {
+    (*delegate_DoubleAndPrint_Ptr)(4);
+  }
+
   system("pause");
 }
