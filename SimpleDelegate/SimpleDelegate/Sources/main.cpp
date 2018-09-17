@@ -1,10 +1,5 @@
-﻿#include <chrono>
-#include <functional>
-#include <iomanip>
-#include <iostream>
-#include <map>
-#include <memory>
-#include <vector>
+﻿#include <iostream>
+#include <type_traits>
 
 template<typename ClassName, typename MethodPointerType>
 class Delegate
@@ -32,7 +27,7 @@ public:
     return this->Invoke(std::forward<Args>(args)...);
   }
 
-public:
+private:
   template<typename... Args>
   inline auto Invoke(Args... args) -> std::enable_if_t<
     std::is_same_v<void, decltype((object.*method)(args...))>,
@@ -70,17 +65,14 @@ int
 main(int argc, char* argv[])
 {
   A a;
+
   Delegate<A, decltype(&A::Double)> delegate_Double{ a, &A::Double };
-  auto result1 = delegate_Double.Invoke(1);
-  std::cout << "1 + 1 = " << result1 << std::endl;
-  auto result2 = delegate_Double(2);
-  std::cout << "2 + 2 = " << result2 << std::endl;
+  std::cout << "2 + 2 = " << delegate_Double(2) << std::endl;
 
   Delegate<A, decltype(&A::DoubleAndPrint)> delegate_DoubleAndPrint{
     a, &A::DoubleAndPrint
   };
-  delegate_DoubleAndPrint.Invoke(3);
-  delegate_DoubleAndPrint(4);
+  delegate_DoubleAndPrint(2);
 
   system("pause");
 }
