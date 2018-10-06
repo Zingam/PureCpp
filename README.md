@@ -10,6 +10,7 @@ Experimental Apps with C/C++
 * Endianness - Testing endianness of the system
 * Inheritance - C++ inheritance
 * MemberFunctionAssignment - Assigning a value to a member function (a setter function example)
+* MethodViaLambdaCalling - Extending a base class and calling the methods via lambdas
 * MultipleInheritance - Simple multiple inheritance test
 * ObjectSlicing - C++ Object Slicing
 * OperatorOverloading - Overloading iostream operator `<<` for enums (uses <type_traits>)
