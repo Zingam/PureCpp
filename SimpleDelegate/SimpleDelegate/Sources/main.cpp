@@ -16,7 +16,7 @@ public:
     -> std::enable_if_t<std::is_same_v<void, decltype(this->Invoke(args...))>,
                         decltype(this->Invoke(args...))>
   {
-    return this->Invoke(std::forward<Args>(args)...);
+    this->Invoke(std::forward<Args>(args)...);
   }
 
   template<typename... Args>
