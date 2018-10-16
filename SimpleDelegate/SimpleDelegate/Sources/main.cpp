@@ -49,6 +49,14 @@ private:
   ClassName& object;
 };
 
+template<typename ClassName, typename MethodPointerType>
+inline std::unique_ptr<Delegate<ClassName, MethodPointerType>>
+make_unique_delegate(ClassName object, MethodPointerType method_Ptr)
+{
+  using DoubleAndPrintDelegateType = Delegate<ClassName, MethodPointerType>;
+  return std::make_unique<DoubleAndPrintDelegateType>(object, method_Ptr);
+}
+
 class A
 {
 public:
@@ -80,9 +88,15 @@ main(int argc, char* argv[])
     std::make_unique<DoubleAndPrintDelegateType>(a, &A::DoubleAndPrint);
 
   if (delegate_DoubleAndPrint_UPtr) {
-    auto a = *delegate_DoubleAndPrint_UPtr;
-    a(3);
+    auto d = *delegate_DoubleAndPrint_UPtr;
+    d(3);
     (*delegate_DoubleAndPrint_UPtr)(3);
+  }
+
+  delegate_DoubleAndPrint_UPtr = make_unique_delegate(a, &A::DoubleAndPrint);
+  if (delegate_DoubleAndPrint_UPtr) {
+    auto d = *delegate_DoubleAndPrint_UPtr;
+    d(4);
   }
 
   auto delegate_DoubleAndPrint_Ptr = delegate_DoubleAndPrint_UPtr.release();
@@ -91,8 +105,7 @@ main(int argc, char* argv[])
   }
 
   // Call the delegate via a raw pointer
-  if (delegate_DoubleAndPrint_Ptr)
-  {
+  if (delegate_DoubleAndPrint_Ptr) {
     (*delegate_DoubleAndPrint_Ptr)(4);
   }
 
