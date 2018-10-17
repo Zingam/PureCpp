@@ -10,6 +10,9 @@ public:
     , object{ object }
   {}
 
+  Delegate(Delegate const&) = default;
+  Delegate(Delegate&&) = default;
+
 public:
   template<typename... Args>
   inline auto operator()(Args... args)
@@ -51,10 +54,17 @@ private:
 
 template<typename ClassName, typename MethodPointerType>
 inline std::unique_ptr<Delegate<ClassName, MethodPointerType>>
-make_unique_delegate(ClassName object, MethodPointerType method_Ptr)
+make_unique_ptr_delegate(ClassName object, MethodPointerType method_Ptr)
 {
   using DoubleAndPrintDelegateType = Delegate<ClassName, MethodPointerType>;
   return std::make_unique<DoubleAndPrintDelegateType>(object, method_Ptr);
+}
+
+template<typename ClassName, typename MethodPointerType>
+inline Delegate<ClassName, MethodPointerType>
+make_delegate(ClassName object, MethodPointerType method_Ptr)
+{
+  return Delegate<ClassName, MethodPointerType>(object, method_Ptr);
 }
 
 class A
@@ -93,7 +103,7 @@ main(int argc, char* argv[])
     (*delegate_DoubleAndPrint_UPtr)(3);
   }
 
-  delegate_DoubleAndPrint_UPtr = make_unique_delegate(a, &A::DoubleAndPrint);
+  delegate_DoubleAndPrint_UPtr = make_unique_ptr_delegate(a, &A::DoubleAndPrint);
   if (delegate_DoubleAndPrint_UPtr) {
     auto d = *delegate_DoubleAndPrint_UPtr;
     d(4);
@@ -106,8 +116,11 @@ main(int argc, char* argv[])
 
   // Call the delegate via a raw pointer
   if (delegate_DoubleAndPrint_Ptr) {
-    (*delegate_DoubleAndPrint_Ptr)(4);
+    (*delegate_DoubleAndPrint_Ptr)(5);
   }
+
+  auto d = make_delegate(a, &A::DoubleAndPrint);
+  d(6);
 
   system("pause");
 }
