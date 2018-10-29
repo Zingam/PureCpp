@@ -5,7 +5,7 @@ VirtualMethodCallPerformance
     printf("Testing the performance of virtual method calls")
 ```
 
-The project tests if virutal methods can be used in a tight loop instead of long
+The project tests if virtual methods can be used in a tight loop instead of long
 `if` or `switch` statements.
 
 1. Measurement method: `std::chrono::steady_clock`
