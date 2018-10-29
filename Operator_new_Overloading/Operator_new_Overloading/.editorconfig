@@ -1,0 +1,21 @@
+# EditorConfig: http://EditorConfig.org
+
+# Top-most EditorConfig file
+root = true
+
+# End of line
+[*]
+end_of_line = crlf
+
+# Final new line
+[*]
+insert_final_newline = true
+
+# Indentation
+[*]
+indent_size = 2
+indent_style = space
+
+# Trailing white space
+[*]
+trim_trailing_whitespace = true
